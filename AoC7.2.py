@@ -10,7 +10,7 @@ mm = []
 for j in range(max(liste) + 1):
     for i in liste:
         p = (abs(i - j) * (abs(i - j) + 1)) / 2
-        m.append(p)
+        m.append(int(p))
     a = sum(m)
     mm.append(a)
     m = []
