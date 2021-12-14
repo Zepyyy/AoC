@@ -23,12 +23,10 @@ for j in range(jour):
     polymer = templiste
     templiste = []
     print("jour: ", j + 1)
-    print("".join(polymer))
+    print("taille: ", len(polymer))
 
 
 print("end")
-print(len(polymer))
-print("".join(polymer))
 maxi = polymer.count(max(set(polymer), key=polymer.count))
 mini = polymer.count(min(set(polymer), key=polymer.count))
 print(max(set(polymer), key=polymer.count), maxi)
