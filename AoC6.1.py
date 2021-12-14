@@ -40,3 +40,4 @@ for i in range(jours):
     quantite[7] = quantite[8]
     quantite[8] = zero
 print(sum(quantite))
+
