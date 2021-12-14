@@ -13,4 +13,5 @@ for j in range(max(liste) + 1):
     a = sum(m)
     mm.append(a)
     m = []
+    
 print(min(mm))
