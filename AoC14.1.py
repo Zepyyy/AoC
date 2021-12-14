@@ -25,12 +25,10 @@ for j in range(jour):
     print("jour: ", j + 1)
     print("taille: ", len(polymer))
 
-
 print("end")
 maxi = polymer.count(max(set(polymer), key=polymer.count))
 mini = polymer.count(min(set(polymer), key=polymer.count))
 print(max(set(polymer), key=polymer.count), maxi)
 print(min(set(polymer), key=polymer.count), mini)
-
 
 print("maxi - mini: ", maxi - mini)
