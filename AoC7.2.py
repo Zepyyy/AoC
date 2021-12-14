@@ -15,3 +15,4 @@ for j in range(max(liste) + 1):
     mm.append(a)
     m = []
 print(min(mm))
+
