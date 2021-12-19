@@ -1,7 +1,4 @@
-liste = [
-    str(i)
-    for i in open("C:\\users\\quent\\Desktop\\AoC2021\\AoC2.txt", "r").readlines()
-]
+liste = [str(i) for i in open("AoC2.txt", "r").readlines()]
 horizontal = 0
 depths = 0
 aim = 0
