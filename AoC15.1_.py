@@ -10,14 +10,6 @@ z = []
 e = ""
 print(len(liste) - 1)
 
-"""for i in range(len(liste)):
-    for j in range(len(liste)):
-        e += str(i) + "," + str(j)
-        e = e.split(",")
-        e = [int(i) for i in e]
-        z.append(e)
-        e = """ ""
-
 while Curseur != [len(liste) - 1, len(liste) - 1]:
 
     if Curseur[0] + 1 != len(liste) and Curseur[1] + 1 != len(liste):
