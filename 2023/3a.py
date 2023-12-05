@@ -1,45 +1,51 @@
 def start():
     with open('3.txt') as f:
         input = f.readlines()
-        
+        input = [i.strip() for i in input]
     return input
 
-def checkAround(nr, i, j, input):
+
+def checkAround(symbol, x, y, input):
     '''this function checks for numbers around the given symbols, and returns them if directly adjacent or diagonal'''
-    print("Checking around", nr, "at", i, j)
-    numbers = []
-    
-    # check for numbers around the symbol
-    # check for numbers above and below
-    for di, dj, direction in [(-1, 0, "above"), (1, 0, "below"), (0, -1, "left"), (0, 1, "right"), (-1, -1, "above left"), (-1, 1, "above right"), (1, -1, "below left"), (1, 1, "below right")]:
-        ni, nj = i + di, j + dj
-        if 0 <= ni < len(input) and 0 <= nj < len(input[ni]) and input[ni][nj].isdigit():
-            number = input[ni][nj]
-            while 0 <= ni-di < len(input) and 0 <= nj-dj < len(input[ni-di]) and input[ni-di][nj-dj].isdigit():
-                number = input[ni-di][nj-dj] + number
-                ni, nj = ni - di, nj - dj
-            while 0 <= ni+di < len(input) and 0 <= nj+dj < len(input[ni+di]) and input[ni+di][nj+dj].isdigit():
-                number = number + input[ni+di][nj+dj]
-                ni, nj = ni + di, nj + dj
-            print("Found", number, direction)
-            numbers.append(int(number))
-        
-    return numbers
-    
-    
-   
+
+    result = []
+
+    for i in range(x-1, x+2):
+        for j in range(y-1, y+2):
+            if i == x and j == y:
+                continue
+            elif input[j][i].isdigit():
+                nb = input[j][i]
+                k = -1
+                while input[j][i+k].isdigit() and i+k >= 0:
+                    nb += input[j][i+k]
+                    input[j] = f"{input[j][:i+k]}.{input[j][i+k+1:]}"
+                    k -= 1
+                nb = nb[::-1]
+                k = 1
+                while i+k < len(input[j]) and input[j][i+k].isdigit():
+                    nb += input[j][i+k]
+                    input[j] = f"{input[j][:i+k]}.{input[j][i+k+1:]}"
+                    k += 1
+                result.append(int(nb))
+    return result
+
 
 def ex(input):
-    symbols = ['*', '$', '%', '+', '&', '-', '#', '=', '/', '@']
-    for i, y in enumerate(input):
-        for j, x in enumerate(y):
-            if x in symbols:
-                print(checkAround(x, i, j, input))
-                return 0
-            
-            
-            # print(f"Checking {i}, {j} at {x}, {y}")
-    
-    return 0
+    result = 0
+    a = []
+    for y, line in enumerate(input):
+        for x, char in enumerate(line):
+            if char != "." and not char.isdigit():
+                a = checkAround(char, x, y, input)
+                # print(a, char)
+                if len(a) == 2 and char == "*":
+                    result += a[0] * a[1]
+                else:
+                    # result += sum(a)
+                    continue
+                # print(f"result: {result}")
+    return result
+
 
 print(ex(start()))
