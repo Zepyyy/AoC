@@ -8,33 +8,16 @@ def map(seeds, *category):
     locations = []
     categories = ["soil", "fertilizer", "water", "light", "temperature", "humidity", "location"]
     for seed in seeds:
-        # print(f"seed: {seed}")
         value = seed
         for i in category:
-            # print(f"category: {categories[int(category.index(i))]}")
-            # print(f"i: {i}")
             for index,j in enumerate(i):
-                # print(f"j: {j}")
                 if int(j[1]) <= int(value) <= int(j[1])+int(j[2]):
-                    # print(f"value: {value}")
-                    # print(f"j[0]: {j[0]}")
-                    # print(f"j[1]: {j[1]}")
-                    # print(f"j[2]: {j[2]}")
-                    # print(f"value-j[1]: {int(value)-int(j[1])}")
-                    # print(f"yay: {int(j[0])+(int(value)-int(j[1]))}")
                     value = int(j[0])+(int(value)-int(j[1]))
-                    # print(f"value: {value}")
-                    
                     break
                 elif index != len(i)-1:
-                    # print("...............")
-                    # print(f"value: {value}")
-                    
                     continue
                 else:
                     value=value
-                    # print(f"value: {value}")
-                
                     break
         locations.append(value)
     return min(locations)
