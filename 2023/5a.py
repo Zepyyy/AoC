@@ -6,11 +6,10 @@ def start():
 
 def map(seeds, *category):
     locations = []
-    categories = ["soil", "fertilizer", "water", "light", "temperature", "humidity", "location"]
     for seed in seeds:
         value = seed
         for i in category:
-            for index,j in enumerate(i):
+            for index, j in enumerate(i):
                 if int(j[1]) <= int(value) <= int(j[1])+int(j[2]):
                     value = int(j[0])+(int(value)-int(j[1]))
                     break
@@ -24,7 +23,6 @@ def map(seeds, *category):
 
 def ex(input):
     import re
-    
     # Use regular expressions to find matches in the entire text
     seeds = re.findall(r'seeds: ([\d\s]+)', input)
     soil = re.findall(r'seed-to-soil map:\n([\d\s\n]+)', input)

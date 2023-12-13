@@ -23,15 +23,11 @@ def map(seeds, *category):
                         break
             # print(f"value: {value}, seed: {seed}")
             locations.append(value)
-    print(locations.index(min(locations))+1)
-    print([i for i in range(len(locations)) if locations[i] == min(locations)])
-    print(locations)
     return min(locations)
 
 
 def ex(input):
     import re
-
     # Use regular expressions to find matches in the entire text
     seeds = re.findall(r'seeds: ([\d\s]+)', input)
     soil = re.findall(r'seed-to-soil map:\n([\d\s\n]+)', input)
